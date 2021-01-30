@@ -52,8 +52,14 @@ public class Game {
     public void dealerTwistCheck(Player player){
         int dealerTot = player.handTotal();
         for( int i  = 0; dealerTot < 16; i++){
-
+            System.out.println("Dealer has " + dealerTot + ". Dealer twists...");
+            dealCard(player);
+            dealerTot = player.handTotal();
         }
+        if (dealerTot >= 16){
+            System.out.println("Dealer has " + dealerTot + ". Dealer sticks!");
+        }
+
     }
 
     public void dealCard(Player player){
@@ -64,6 +70,12 @@ public class Game {
             System.out.println("Sorry " + player.getName() + "... You loose!");
         }
     }
+
+//    public boolean checkHandAfterDeal(Player player){
+//        if(player.getName() == "Dealer" && player.handTotal() < 16){
+//
+//        }
+//    }
 
     public Player getWinner(){
         int highest = 0;

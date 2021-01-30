@@ -38,4 +38,15 @@ public class GameTest {
         game.dealCard(player_1);
         assertEquals(3, game.getPlayer().get(1).getHand().size());
     }
+
+    @Test
+    public void dealerTwistsUnder16(){
+        game = new Game();
+        game.createGame();
+        Player dealer = game.getPlayer().get(0);
+        game.dealerTwistCheck(dealer);
+        int finishedHandValue = dealer.handTotal();
+        assertEquals(true, finishedHandValue >=16);
+
+    }
 }
