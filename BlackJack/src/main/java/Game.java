@@ -10,8 +10,8 @@ public class Game {
         this.deck = new Deck();
     }
 
-    public void countPlayers(){
-        players.size();
+    public int countPlayers(){
+        return players.size();
     }
 
     public ArrayList<Player> getPlayer(){
@@ -46,6 +46,14 @@ public class Game {
         for(Player player : players) {
             dealCard(player);
         }
+
+    }
+
+    public void dealerTwistCheck(Player player){
+        int dealerTot = player.handTotal();
+        for( int i  = 0; dealerTot < 16; i++){
+
+        }
     }
 
     public void dealCard(Player player){
@@ -53,7 +61,7 @@ public class Game {
         player.setHand(dealtCard);
         System.out.println(player.getName() + " has been dealt the " + dealtCard.getRank() + " of " + dealtCard.getSuit());
         if(player.handTotal() > 21){
-            System.out.println("Sorry" + player.getName() + "... You loose!");
+            System.out.println("Sorry " + player.getName() + "... You loose!");
         }
     }
 
@@ -61,7 +69,7 @@ public class Game {
         int highest = 0;
         Player theWinner = null;
         for(Player player : players){
-            if (player.handTotal() > highest){
+            if (player.handTotal() > highest && player.handTotal() <= 21){
                 //get the values of the cards dealt
                 highest = player.handTotal();
                 theWinner = player;
