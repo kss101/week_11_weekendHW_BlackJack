@@ -10,10 +10,6 @@ public class Game {
         this.deck = new Deck();
     }
 
-    public void addPlayerToGame(Player player){
-        players.add(player);
-    }
-
     public void countPlayers(){
         players.size();
     }
@@ -22,23 +18,46 @@ public class Game {
         return players;
     }
 
-    public Player createGame(){
-        //Get number of players...
-        int numOfPlayers = 2; // Can be passed in later!
-        //For each player create player Object
-        for(int i = 1; i < numOfPlayers+1; i++){
-            Player player = new Player("Player_"+i);
-            // and call addPlayerToGame(player)
-            addPlayerToGame(player);
+    public void setPlayers(int numOfPlayers){
+        for(int i = 0; i < numOfPlayers; i++){
+            Player player = new Player("Player_"+(i+1));
+            players.add(player);
         }
+    }
+
+    public void setDealer(){
+        Player dealer = new Player("Dealer");
+        players.add(dealer);
+    }
+
+    public void createGame(){
+        setDealer();
+        //Get number of players...
+        int numOfPlayers = 1; // Can be passed in later!
+        //For each player create player Object
+        setPlayers(numOfPlayers);
         //Call createDeck to get a new shuffled deck
         deck.createDeck();
-        //For each player call dealTopCard()
+        //For each player deal first card
         for(Player player : players) {
-            Card dealtCard = deck.dealTopCard();
-            player.setHand(dealtCard);
-            System.out.println(player.getName() + " has the " + dealtCard.getRank() + " of " + dealtCard.getSuit());
+            dealCard(player);
         }
+        //For each player deal second card
+        for(Player player : players) {
+            dealCard(player);
+        }
+    }
+
+    public void dealCard(Player player){
+        Card dealtCard = deck.dealTopCard();
+        player.setHand(dealtCard);
+        System.out.println(player.getName() + " has been dealt the " + dealtCard.getRank() + " of " + dealtCard.getSuit());
+        if(player.handTotal() > 21){
+            System.out.println("Sorry" + player.getName() + "... You loose!");
+        }
+    }
+
+    public Player getWinner(){
         int highest = 0;
         Player theWinner = null;
         for(Player player : players){

@@ -7,7 +7,10 @@ public class GameTest {
     @Test
     public void canCreateGame(){
         game = new Game();
-       // game.createGame();
-        System.out.println(game.createGame().getName());
+        game.createGame();
+        //Player dealer = game.getPlayer().get(0);
+        //Player player_1 = game.getPlayer().get(1);
+        //game.dealCard(player_1);
+        System.out.println(game.getWinner().getName() + " wins!");
     }
 }
