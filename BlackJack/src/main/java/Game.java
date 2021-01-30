@@ -30,23 +30,18 @@ public class Game {
         players.add(dealer);
     }
 
-    public void createGame(){
+    public void createGame( int numOfPlayers){
+        //Create dealer
         setDealer();
-        //Get number of players...
-        int numOfPlayers = 1; // Can be passed in later!
-        //For each player create player Object
+        //Get number of players and create player Objects
         setPlayers(numOfPlayers);
-        //Call createDeck to get a new shuffled deck
+        //Create a deck to get a new shuffled deck
         deck.createDeck();
-        //For each player deal first card
+        // Deal two cards to each player and dealer
         for(Player player : players) {
             dealCard(player);
-        }
-        //For each player deal second card
-        for(Player player : players) {
             dealCard(player);
         }
-
     }
 
     public void dealerTwistCheck(Player player){
@@ -70,12 +65,6 @@ public class Game {
             System.out.println("Sorry " + player.getName() + "... You loose!");
         }
     }
-
-//    public boolean checkHandAfterDeal(Player player){
-//        if(player.getName() == "Dealer" && player.handTotal() < 16){
-//
-//        }
-//    }
 
     public Player getWinner(){
         int highest = 0;

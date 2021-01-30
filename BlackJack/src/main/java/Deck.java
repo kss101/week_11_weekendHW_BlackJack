@@ -32,24 +32,5 @@ public class Deck {
         return this.stackOfCards.remove(0);
     }
 
-//    public void shuffleDeck(Deck deck){
-//        Deck originalDeck = deck;
-//        ArrayList<Card> shuffledDeck = new ArrayList<>();
-//        //For the number of cards in original deck
-//        for ( int numOfCards = 0; numOfCards < originalDeck.stackOfCards.size(); numOfCards++){
-//            //Create a random number in that range from 1 to size of ORIGINAL deck
-//            int getCard = (int)(Math.random() * originalDeck.stackOfCards.size());
-//            //Get the card in ORIGINAL deck at the random num index
-//            Card tempCard = originalDeck.stackOfCards.get(numOfCards);
-//            originalDeck.stackOfCards. = originalDeck.stackOfCards.get(getCard);
-//           Add that card to new deck
-//            originalDeck.stackOfCards.add(tempCard);
-
-//
-//
-
-//        //Repeat
-//      }
-//    }
 }
 
